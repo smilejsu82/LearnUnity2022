@@ -5,19 +5,19 @@ using UnityEngine;
 public class ArrowGenerator : MonoBehaviour
 {
     public GameObject arrowPrefab;
-    float span = 1.0f;
-    float delta = 0;
-    // Start is called before the first frame update
+    private GameObject player;
+    private float span = 1.0f;
+    private float delta = 0;
+
     void Start()
     {
-        
+        this.player = GameObject.Find("player");
     }
 
-    // Update is called once per frame
     void Update()
     {
         this.delta += Time.deltaTime;
-        if(this.delta > this.span)
+        if (this.delta > this.span && player.GetComponent<PlayerController>().Hp > 0)
         {
             this.delta = 0;
             GameObject go = Instantiate<GameObject>(arrowPrefab);

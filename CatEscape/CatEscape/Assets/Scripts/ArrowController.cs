@@ -4,20 +4,22 @@ using UnityEngine;
 
 public class ArrowController : MonoBehaviour
 {
-    GameObject player;
-    // Start is called before the first frame update
+    private GameObject player;
+    private GameObject director;
+
     void Start()
     {
         this.player = GameObject.Find("player");
+        this.director = GameObject.Find("GameDirector");
     }
 
-    // Update is called once per frame
     void Update()
     {
         this.transform.Translate(0, -0.1f, 0);
 
         if(this.transform.position.y < -4.0f)
         {
+            director.GetComponent<GameDirector>().GetPoint();
             Destroy(this.gameObject);
         }
 
@@ -31,8 +33,8 @@ public class ArrowController : MonoBehaviour
 
         if(d < r1+r2)
         {
-            GameObject director = GameObject.Find("GameDirector");
             director.GetComponent<GameDirector>().DecreaseHp();
+  
             Destroy(gameObject);
         }
     }
