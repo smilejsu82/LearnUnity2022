@@ -7,20 +7,31 @@ public class PlayerController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
     }
 
-    // Update is called once per frame
-    void Update()
+    public void LButtonDown()
     {
-        if (Input.GetKeyDown(KeyCode.LeftArrow))
+        if (this.transform.position.x > -8)
         {
             this.transform.Translate(-3, 0, 0);
         }
 
-        if(Input.GetKeyDown(KeyCode.RightArrow))
+        if(this.transform.position.x <= -8)
+        {
+            this.transform.position = new Vector3(-8, -3.59f, 0);
+        }
+    }
+
+    public void RButtonDown()
+    {
+        if (this.transform.position.x < 8)
         {
             this.transform.Translate(3, 0, 0);
+        }
+
+        if (this.transform.position.x >= 8)
+        {
+            this.transform.position = new Vector3(8, -3.59f, 0);
         }
     }
 }
