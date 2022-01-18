@@ -5,7 +5,7 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     public float Hp;
-
+    public float maxHp;
     // Start is called before the first frame update
     void Start()
     {

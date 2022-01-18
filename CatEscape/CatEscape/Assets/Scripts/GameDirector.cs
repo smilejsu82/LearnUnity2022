@@ -5,11 +5,11 @@ using UnityEngine.UI;
 
 public class GameDirector : MonoBehaviour
 {
-    GameObject hpGauge;
-    GameObject player;
-    GameObject score;
-    public float point;
-    GameObject timer;
+    private GameObject hpGauge;
+    private GameObject player;
+    private GameObject score;
+    public float point = 0;
+    private GameObject timer;
     public float time;
     private float decreaseTime = 1.0f;
     private float delta = 0;
@@ -33,9 +33,9 @@ public class GameDirector : MonoBehaviour
         if (this.delta > this.decreaseTime && this.player.GetComponent<PlayerController>().Hp > 0)
         {
             this.delta = 0;
+            if(time > 0)
             time -= decreaseTime;
         }
-
         if (this.player.GetComponent<PlayerController>().Hp > 0 && this.time > 0)
         {
             this.score.GetComponent<Text>().text = "현재 점수:" + point + "점";
@@ -56,6 +56,6 @@ public class GameDirector : MonoBehaviour
 
     public void GetPoint()
     {
-        this.point += 1f;
+        this.point += 1;
     }
 }

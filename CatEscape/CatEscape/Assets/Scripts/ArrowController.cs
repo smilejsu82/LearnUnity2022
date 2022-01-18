@@ -31,10 +31,10 @@ public class ArrowController : MonoBehaviour
         float r1 = 0.5f;
         float r2 = 1.0f;
 
-        if(d < r1+r2)
+        if (d < r1 + r2)
         {
             director.GetComponent<GameDirector>().DecreaseHp();
-  
+
             Destroy(gameObject);
         }
     }
