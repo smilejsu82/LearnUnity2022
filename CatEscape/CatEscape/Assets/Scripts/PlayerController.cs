@@ -11,21 +11,30 @@ public class PlayerController : MonoBehaviour
     {
     }
 
-    public void LButtonDown()
+    private void Update()
     {
+        if (Input.GetKeyDown(KeyCode.LeftArrow))
+        {
+            this.MoveLeft();
+        }
+        else if (Input.GetKeyDown(KeyCode.RightArrow)) {
+            this.MoveRight();
+        }
+    }
+
+    private void MoveLeft() {
         if (this.transform.position.x > -8)
         {
             this.transform.Translate(-3, 0, 0);
         }
 
-        if(this.transform.position.x <= -8)
+        if (this.transform.position.x <= -8)
         {
             this.transform.position = new Vector3(-8, -3.59f, 0);
         }
     }
 
-    public void RButtonDown()
-    {
+    private void MoveRight() {
         if (this.transform.position.x < 8)
         {
             this.transform.Translate(3, 0, 0);
@@ -35,5 +44,15 @@ public class PlayerController : MonoBehaviour
         {
             this.transform.position = new Vector3(8, -3.59f, 0);
         }
+    }
+
+    public void LButtonDown()
+    {
+        this.MoveLeft();
+    }
+
+    public void RButtonDown()
+    {
+        this.MoveRight();
     }
 }
